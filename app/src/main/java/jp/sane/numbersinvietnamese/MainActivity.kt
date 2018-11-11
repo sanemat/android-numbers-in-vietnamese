@@ -3,6 +3,7 @@ package jp.sane.numbersinvietnamese
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -11,8 +12,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val results = mapOf("5" to "năm", "6" to "sáu", "103" to "một trăm lẻ ba")
-        val englishWord = 103
-        val key = englishWord.toString()
+        val random = Random()
+        val index = random.nextInt(results.size)
+        val key = results.keys.elementAt(index)
         val vietnameseWord = results[key]
         val keyView = findViewById<TextView>(R.id.key)
         keyView.text = key
