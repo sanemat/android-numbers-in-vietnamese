@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
             val vietnameseWord = results[key]
             val keyView = findViewById<TextView>(R.id.key)
             keyView.text = key
+            keyView.visibility = View.VISIBLE
             val wordView = findViewById<TextView>(R.id.word)
             wordView.text = vietnameseWord
         }
