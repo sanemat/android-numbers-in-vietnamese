@@ -2,6 +2,7 @@ package jp.sane.numbersinvietnamese
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import java.util.*
@@ -31,6 +32,13 @@ class MainActivity : AppCompatActivity() {
         val vietnameseWord = results[key]
         val keyView = findViewById<TextView>(R.id.key)
         keyView.text = key
+        keyView.setOnClickListener {
+            if (it.visibility == View.VISIBLE) {
+                it.visibility = View.INVISIBLE
+            } else {
+                it.visibility = View.VISIBLE
+            }
+        }
         val wordView = findViewById<TextView>(R.id.word)
         wordView.text = vietnameseWord
     }
