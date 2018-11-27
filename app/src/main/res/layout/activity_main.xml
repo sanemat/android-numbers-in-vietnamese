@@ -10,46 +10,45 @@
     <View
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:id="@+id/number"
+            android:id="@+id/numberView"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
     />
     <View
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:id="@+id/vietnamese"
+            android:id="@+id/vietnameseView"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/number"
+            app:layout_constraintTop_toBottomOf="@+id/numberView"
             app:layout_constraintHorizontal_bias="0.0"/>
     <View
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            android:id="@+id/next" app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/nextView" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/vietnamese"
+            app:layout_constraintTop_toBottomOf="@+id/vietnameseView"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.8"/>
     <TextView
             android:text="@string/numberText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/numberText" app:layout_constraintEnd_toEndOf="@+id/number"
-            app:layout_constraintStart_toStartOf="@+id/number"
-            app:layout_constraintBottom_toTopOf="@+id/vietnamese"
-            app:layout_constraintTop_toTopOf="@+id/number" tools:text="5"/>
+            android:id="@+id/numberText" app:layout_constraintEnd_toEndOf="@+id/numberView"
+            app:layout_constraintStart_toStartOf="@+id/numberView"
+            app:layout_constraintBottom_toTopOf="@+id/vietnameseView"
+            app:layout_constraintTop_toTopOf="@+id/numberView" tools:text="5"/>
     <TextView
             android:text="@string/vietnamesetext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vietnameseText"
-            app:layout_constraintBottom_toBottomOf="@+id/vietnamese" app:layout_constraintEnd_toEndOf="@+id/vietnamese"
-            app:layout_constraintStart_toStartOf="@+id/vietnamese"
-            app:layout_constraintTop_toTopOf="@+id/vietnamese" tools:text="nam"/>
+            app:layout_constraintBottom_toBottomOf="@+id/vietnameseView" app:layout_constraintEnd_toEndOf="@+id/vietnameseView"
+            app:layout_constraintStart_toStartOf="@+id/vietnameseView"
+            app:layout_constraintTop_toTopOf="@+id/vietnameseView" tools:text="nam"/>
     <Button
-            android:text="@string/nextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nextButton"
-            app:layout_constraintTop_toTopOf="@+id/next" app:layout_constraintBottom_toBottomOf="@+id/next"
-            app:layout_constraintEnd_toEndOf="@+id/next" app:layout_constraintStart_toStartOf="@+id/next"
-            android:layout_marginStart="8dp"/>
+            android:id="@+id/next"
+            app:layout_constraintTop_toTopOf="@+id/nextView" app:layout_constraintBottom_toBottomOf="@+id/nextView"
+            app:layout_constraintEnd_toEndOf="@+id/nextView" app:layout_constraintStart_toStartOf="@+id/nextView"
+            android:layout_marginStart="8dp" tools:text="Next" android:text="@string/next"/>
 </android.support.constraint.ConstraintLayout>
