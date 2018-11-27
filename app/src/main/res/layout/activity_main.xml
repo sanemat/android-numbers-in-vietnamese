@@ -46,11 +46,12 @@
             app:layout_constraintEnd_toEndOf="@+id/vietnameseView"
             app:layout_constraintStart_toStartOf="@+id/vietnameseView"
             app:layout_constraintTop_toTopOf="@+id/vietnameseView" tools:text="nam" android:textSize="36sp"/>
-    <Button
+    <TextView
+            android:text="@string/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/next"
-            app:layout_constraintTop_toTopOf="@+id/nextView" app:layout_constraintBottom_toBottomOf="@+id/nextView"
-            app:layout_constraintEnd_toEndOf="@+id/nextView" app:layout_constraintStart_toStartOf="@+id/nextView"
-            android:layout_marginStart="8dp" tools:text="Next" android:text="@string/next"/>
+            android:id="@+id/nextText"
+            app:layout_constraintBottom_toBottomOf="@+id/nextView" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="36sp" app:layout_constraintTop_toTopOf="@+id/nextView"/>
 </android.support.constraint.ConstraintLayout>
