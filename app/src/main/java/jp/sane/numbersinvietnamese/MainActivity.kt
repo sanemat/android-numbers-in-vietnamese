@@ -20,18 +20,18 @@ class MainActivity : AppCompatActivity() {
             val index = random.nextInt(results.size)
             val key = results.keys.elementAt(index)
             val vietnameseWord = results[key]
-            val keyView = findViewById<TextView>(R.id.key)
+            val keyView = findViewById<TextView>(R.id.numberText)
             keyView.text = key
-            val wordView = findViewById<TextView>(R.id.word)
+            val wordView = findViewById<TextView>(R.id.vietnameseText)
             wordView.text = vietnameseWord
         }
 
         val index = random.nextInt(results.size)
         val key = results.keys.elementAt(index)
         val vietnameseWord = results[key]
-        val keyView = findViewById<TextView>(R.id.key)
+        val keyView = findViewById<TextView>(R.id.numberText)
         keyView.text = key
-        val wordView = findViewById<TextView>(R.id.word)
+        val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
     }
 }

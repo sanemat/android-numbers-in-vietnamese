@@ -7,31 +7,50 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
+    <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:id="@+id/key" android:layout_marginTop="32dp"
-            tools:text="Number" app:layout_constraintBottom_toTopOf="@+id/word"
-            android:textSize="36sp"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/word" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/key" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_height="100dp"
+            android:id="@+id/numberView"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="32dp"
-            tools:text="Vietnamese"
-            app:layout_constraintVertical_bias="0.51" android:textSize="36sp"
-            app:layout_constraintBottom_toTopOf="@+id/next"/>
+            android:layout_marginTop="32dp"/>
+    <View
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/vietnameseView"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberView"
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="32dp"/>
+    <View
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:id="@+id/nextView" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vietnameseView"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.8"
+            android:layout_marginBottom="32dp"/>
+    <TextView
+            android:text="@string/numberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/numberText" app:layout_constraintEnd_toEndOf="@+id/numberView"
+            app:layout_constraintStart_toStartOf="@+id/numberView"
+            app:layout_constraintBottom_toTopOf="@+id/vietnameseView"
+            app:layout_constraintTop_toTopOf="@+id/numberView" tools:text="5" android:textSize="36sp"/>
+    <TextView
+            android:text="@string/vietnamesetext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/vietnameseText"
+            app:layout_constraintBottom_toBottomOf="@+id/vietnameseView"
+            app:layout_constraintEnd_toEndOf="@+id/vietnameseView"
+            app:layout_constraintStart_toStartOf="@+id/vietnameseView"
+            app:layout_constraintTop_toTopOf="@+id/vietnameseView" tools:text="nam" android:textSize="36sp"/>
     <Button
-            android:text="@string/next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/next" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-    />
-
+            android:id="@+id/next"
+            app:layout_constraintTop_toTopOf="@+id/nextView" app:layout_constraintBottom_toBottomOf="@+id/nextView"
+            app:layout_constraintEnd_toEndOf="@+id/nextView" app:layout_constraintStart_toStartOf="@+id/nextView"
+            android:layout_marginStart="8dp" tools:text="Next" android:text="@string/next"/>
 </android.support.constraint.ConstraintLayout>
