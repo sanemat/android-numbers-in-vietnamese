@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Num in V</string>
     <string name="next">Next</string>
+    <string name="numberText">5</string>
+    <string name="vietnamesetext">nam</string>
+    <string name="nextButton">next</string>
 </resources>
