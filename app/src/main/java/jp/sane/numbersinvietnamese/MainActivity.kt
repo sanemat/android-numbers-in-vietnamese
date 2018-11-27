@@ -32,6 +32,12 @@ class MainActivity : AppCompatActivity() {
             toggleNumberVisibility()
         }
 
+        val vietnameseView = findViewById<View>(R.id.vietnameseView)
+
+        vietnameseView.setOnClickListener {
+            toggleVietnameseVisibility()
+        }
+
         val index = random.nextInt(results.size)
         val key = results.keys.elementAt(index)
         val vietnameseWord = results[key]
@@ -47,6 +53,15 @@ class MainActivity : AppCompatActivity() {
             numberText.visibility = View.INVISIBLE
         } else {
             numberText.visibility = View.VISIBLE
+        }
+    }
+
+    fun toggleVietnameseVisibility() {
+        val vietnameseText = findViewById<TextView>(R.id.vietnameseText)
+        if (vietnameseText.visibility == View.VISIBLE) {
+            vietnameseText.visibility = View.INVISIBLE
+        } else {
+            vietnameseText.visibility = View.VISIBLE
         }
     }
 }
