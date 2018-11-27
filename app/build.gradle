@@ -10,8 +10,8 @@ android {
         applicationId "jp.sane.numbersinvietnamese"
         minSdkVersion 26
         targetSdkVersion 27
-        versionCode 1000001
-        versionName "1.0.1"
+        versionCode 1000002
+        versionName "1.0.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
