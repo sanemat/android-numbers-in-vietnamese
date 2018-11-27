@@ -26,6 +26,12 @@ class MainActivity : AppCompatActivity() {
             wordView.text = vietnameseWord
         }
 
+        val numberView = findViewById<View>(R.id.numberView)
+
+        numberView.setOnClickListener {
+            toggleNumberVisibility()
+        }
+
         val index = random.nextInt(results.size)
         val key = results.keys.elementAt(index)
         val vietnameseWord = results[key]
@@ -33,5 +39,14 @@ class MainActivity : AppCompatActivity() {
         keyView.text = key
         val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
+    }
+
+    fun toggleNumberVisibility() {
+        val numberText = findViewById<TextView>(R.id.numberText)
+        if (numberText.visibility == View.VISIBLE) {
+            numberText.visibility = View.INVISIBLE
+        } else {
+            numberText.visibility = View.VISIBLE
+        }
     }
 }
