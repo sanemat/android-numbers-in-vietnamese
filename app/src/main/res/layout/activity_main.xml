@@ -35,15 +35,16 @@
             android:id="@+id/numberText" app:layout_constraintEnd_toEndOf="@+id/numberView"
             app:layout_constraintStart_toStartOf="@+id/numberView"
             app:layout_constraintBottom_toTopOf="@+id/vietnameseView"
-            app:layout_constraintTop_toTopOf="@+id/numberView" tools:text="5"/>
+            app:layout_constraintTop_toTopOf="@+id/numberView" tools:text="5" android:textSize="36sp"/>
     <TextView
             android:text="@string/vietnamesetext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/vietnameseText"
-            app:layout_constraintBottom_toBottomOf="@+id/vietnameseView" app:layout_constraintEnd_toEndOf="@+id/vietnameseView"
+            app:layout_constraintBottom_toBottomOf="@+id/vietnameseView"
+            app:layout_constraintEnd_toEndOf="@+id/vietnameseView"
             app:layout_constraintStart_toStartOf="@+id/vietnameseView"
-            app:layout_constraintTop_toTopOf="@+id/vietnameseView" tools:text="nam"/>
+            app:layout_constraintTop_toTopOf="@+id/vietnameseView" tools:text="nam" android:textSize="36sp"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
