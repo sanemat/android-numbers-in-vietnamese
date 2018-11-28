@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import java.util.*
+import android.speech.tts.TextToSpeech
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +38,22 @@ class MainActivity : AppCompatActivity() {
 
         vietnameseView.setOnClickListener {
             toggleVietnameseVisibility()
+        }
+
+        val speechView = findViewById<View>(R.id.speechView)
+        speechView.setOnClickListener {
+            val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
+            val vietnamese = vietnameseTextView.text.toString()
+            val textToSpeech = object {
+                val value: TextToSpeech get() = inner
+                private val inner = TextToSpeech(
+                    applicationContext,
+                    {
+                        value.setLanguage(Locale.UK)
+                        value.speak("Hello World", TextToSpeech.QUEUE_FLUSH,null,null)
+                    }
+                )
+            }.value
         }
 
         val index = random.nextInt(results.size)
