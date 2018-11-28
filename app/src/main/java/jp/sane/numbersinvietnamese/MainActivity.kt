@@ -1,11 +1,13 @@
 package jp.sane.numbersinvietnamese
 
+import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import java.util.*
 import android.speech.tts.TextToSpeech
+import android.widget.Button
 
 
 class MainActivity : AppCompatActivity() {
@@ -18,14 +20,29 @@ class MainActivity : AppCompatActivity() {
         val random = Random()
         val nextView = findViewById<View>(R.id.nextView)
 
+        val pref = getSharedPreferences("num-in-v", Context.MODE_PRIVATE)
+
         nextView.setOnClickListener {
+            val revealNumber = pref.getBoolean("revealNumber", true)
+            val revealVietnamese = pref.getBoolean("revealVietnamese", true)
+            val autoPlay = pref.getBoolean("autoPlay", false)
             val index = random.nextInt(results.size)
             val key = results.keys.elementAt(index)
             val vietnameseWord = results[key]
             val keyView = findViewById<TextView>(R.id.numberText)
             keyView.text = key
+            if (revealNumber) {
+                keyView.visibility = View.VISIBLE
+            } else {
+                keyView.visibility = View.INVISIBLE
+            }
             val wordView = findViewById<TextView>(R.id.vietnameseText)
             wordView.text = vietnameseWord
+            if (revealVietnamese) {
+                wordView.visibility = View.VISIBLE
+            } else {
+                wordView.visibility = View.INVISIBLE
+            }
         }
 
         val numberView = findViewById<View>(R.id.numberView)
@@ -38,6 +55,17 @@ class MainActivity : AppCompatActivity() {
 
         vietnameseView.setOnClickListener {
             toggleVietnameseVisibility()
+        }
+
+        val saveToggleButton = findViewById<Button>(R.id.saveToggle)
+
+        saveToggleButton.setOnClickListener {
+            val keyView = findViewById<TextView>(R.id.numberText)
+            val wordView = findViewById<TextView>(R.id.vietnameseText)
+            val editor = pref.edit()
+            editor.putBoolean("revealNumber", keyView.visibility == View.VISIBLE)
+            editor.putBoolean("revealVietnamese", wordView.visibility == View.VISIBLE)
+            editor.apply()
         }
 
         val speechView = findViewById<View>(R.id.speechView)
@@ -57,13 +85,26 @@ class MainActivity : AppCompatActivity() {
             }.value
         }
 
+        val revealNumber = pref.getBoolean("revealNumber", true)
+        val revealVietnamese = pref.getBoolean("revealVietnamese", true)
+        val autoPlay = pref.getBoolean("autoPlay", false)
         val index = random.nextInt(results.size)
         val key = results.keys.elementAt(index)
         val vietnameseWord = results[key]
         val keyView = findViewById<TextView>(R.id.numberText)
         keyView.text = key
+        if (revealNumber) {
+            keyView.visibility = View.VISIBLE
+        } else {
+            keyView.visibility = View.INVISIBLE
+        }
         val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
+        if (revealVietnamese) {
+            wordView.visibility = View.VISIBLE
+        } else {
+            wordView.visibility = View.INVISIBLE
+        }
     }
 
     fun toggleNumberVisibility() {
