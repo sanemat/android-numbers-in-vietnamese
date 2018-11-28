@@ -50,8 +50,7 @@ class MainActivity : AppCompatActivity() {
                 private val inner = TextToSpeech(
                     applicationContext,
                     {
-                        // Android text to speech vietnamese https://www.howkteam.vn/questions/android-text-to-speech-vietnamese-41187
-                        value.setLanguage(Locale.forLanguageTag("vi-VN"))
+                        value.setLanguage(Locale("vi"))
                         value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
                     }
                 )
