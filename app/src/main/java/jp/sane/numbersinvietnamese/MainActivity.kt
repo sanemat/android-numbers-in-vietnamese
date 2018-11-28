@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import java.util.*
+import android.speech.tts.TextToSpeech
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +38,24 @@ class MainActivity : AppCompatActivity() {
 
         vietnameseView.setOnClickListener {
             toggleVietnameseVisibility()
+        }
+
+        val speechView = findViewById<View>(R.id.speechView)
+        speechView.setOnClickListener {
+            val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
+            val vietnamese = vietnameseTextView.text.toString()
+            // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
+            val textToSpeech = object {
+                val value: TextToSpeech get() = inner
+                private val inner = TextToSpeech(
+                    applicationContext,
+                    {
+                        // Android text to speech vietnamese https://www.howkteam.vn/questions/android-text-to-speech-vietnamese-41187
+                        value.setLanguage(Locale.forLanguageTag("vi-VN"))
+                        value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
+                    }
+                )
+            }.value
         }
 
         val index = random.nextInt(results.size)
