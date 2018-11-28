@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.TextView
 import java.util.*
 import android.speech.tts.TextToSpeech
+import android.widget.Button
 
 
 class MainActivity : AppCompatActivity() {
@@ -54,6 +55,17 @@ class MainActivity : AppCompatActivity() {
 
         vietnameseView.setOnClickListener {
             toggleVietnameseVisibility()
+        }
+
+        val saveToggleButton = findViewById<Button>(R.id.saveToggle)
+
+        saveToggleButton.setOnClickListener {
+            val keyView = findViewById<TextView>(R.id.numberText)
+            val wordView = findViewById<TextView>(R.id.vietnameseText)
+            val editor = pref.edit()
+            editor.putBoolean("revealNumber", keyView.visibility == View.VISIBLE)
+            editor.putBoolean("revealVietnamese", wordView.visibility == View.VISIBLE)
+            editor.apply()
         }
 
         val speechView = findViewById<View>(R.id.speechView)
