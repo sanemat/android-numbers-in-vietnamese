@@ -21,8 +21,6 @@ class MainActivity : AppCompatActivity() {
             this.textToSpeech = initTextToSpeech(applicationContext)
         }
 
-        val results = mapOf("5" to "năm", "6" to "sáu", "103" to "một trăm lẻ ba")
-        val random = Random()
         val nextView = findViewById<View>(R.id.nextView)
 
         val pref = getSharedPreferences("num-in-v", Context.MODE_PRIVATE)
@@ -31,11 +29,10 @@ class MainActivity : AppCompatActivity() {
             val revealNumber = pref.getBoolean("revealNumber", true)
             val revealVietnamese = pref.getBoolean("revealVietnamese", true)
             val autoPlay = pref.getBoolean("autoPlay", false)
-            val index = random.nextInt(results.size)
-            val key = results.keys.elementAt(index)
-            val vietnameseWord = results[key]
+            val key = getNumber()
+            val vietnameseWord = number2Letter(key)
             val keyView = findViewById<TextView>(R.id.numberText)
-            keyView.text = key
+            keyView.text = key.toString()
             keyView.visibility = booleanToVisibility(revealNumber)
             val wordView = findViewById<TextView>(R.id.vietnameseText)
             wordView.text = vietnameseWord
@@ -78,11 +75,10 @@ class MainActivity : AppCompatActivity() {
         val revealNumber = pref.getBoolean("revealNumber", true)
         val revealVietnamese = pref.getBoolean("revealVietnamese", true)
         val autoPlay = pref.getBoolean("autoPlay", false)
-        val index = random.nextInt(results.size)
-        val key = results.keys.elementAt(index)
-        val vietnameseWord = results[key]
+        val key = getNumber()
+        val vietnameseWord = number2Letter(key)
         val keyView = findViewById<TextView>(R.id.numberText)
-        keyView.text = key
+        keyView.text = key.toString()
         keyView.visibility = booleanToVisibility(revealNumber)
         val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
@@ -128,5 +124,19 @@ fun booleanToVisibility(bool: Boolean): Int {
         View.VISIBLE
     } else {
         View.INVISIBLE
+    }
+}
+
+fun getNumber() : Int {
+    val array = arrayOf(5, 6, 103)
+    return array[Random().nextInt(array.size)]
+}
+
+fun number2Letter(num: Int) : String {
+    return when (num) {
+        5 -> "năm"
+        6 -> "sáu"
+        103 -> "một trăm lẻ ba"
+        else -> "unknown"
     }
 }
