@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
             val revealVietnamese = pref.getBoolean("revealVietnamese", true)
             val autoPlay = pref.getBoolean("autoPlay", false)
             val number = getNumber()
-            val vietnameseWord = number2Letter(number)
+            val vietnameseWord = numberToVietnamese(number)
             val numberString = number.toString()
             numberText.text = numberString
             numberText.visibility = booleanToVisibility(revealNumber)
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         val revealNumber = pref.getBoolean("revealNumber", true)
         val revealVietnamese = pref.getBoolean("revealVietnamese", true)
         val number = getNumber()
-        val vietnameseWord = number2Letter(number)
+        val vietnameseWord = numberToVietnamese(number)
         val numberString = number.toString()
         numberText.text = numberString
         numberText.visibility = booleanToVisibility(revealNumber)
@@ -123,7 +123,7 @@ fun getNumber() : Int {
     return array[Random().nextInt(array.size)]
 }
 
-fun number2Letter(num: Int) : String {
+fun numberToVietnamese(num: Int) : String {
     return when (num) {
         5 -> "năm"
         6 -> "sáu"
