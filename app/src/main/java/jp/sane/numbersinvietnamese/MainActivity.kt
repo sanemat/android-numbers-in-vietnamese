@@ -1,20 +1,25 @@
 package jp.sane.numbersinvietnamese
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import java.util.*
-import android.speech.tts.TextToSpeech
-import android.widget.Button
 
 
 class MainActivity : AppCompatActivity() {
+    private var textToSpeech: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (this.textToSpeech == null) {
+            this.textToSpeech = initTextToSpeech(applicationContext)
+        }
 
         val results = mapOf("5" to "năm", "6" to "sáu", "103" to "một trăm lẻ ba")
         val random = Random()
@@ -72,17 +77,10 @@ class MainActivity : AppCompatActivity() {
         speechView.setOnClickListener {
             val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
             val vietnamese = vietnameseTextView.text.toString()
-            // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
-            val textToSpeech = object {
-                val value: TextToSpeech get() = inner
-                private val inner = TextToSpeech(
-                    applicationContext,
-                    {
-                        value.setLanguage(Locale("vi"))
-                        value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
-                    }
-                )
-            }.value
+            if (this.textToSpeech == null) {
+                this.textToSpeech = initTextToSpeech(applicationContext)
+            }
+            this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
         }
 
         val revealNumber = pref.getBoolean("revealNumber", true)
@@ -124,4 +122,17 @@ class MainActivity : AppCompatActivity() {
             vietnameseText.visibility = View.VISIBLE
         }
     }
+}
+
+fun initTextToSpeech(context: Context) : TextToSpeech {
+    // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
+    // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
+    return object {
+        val value: TextToSpeech get() = inner
+        private val inner = TextToSpeech(
+            context
+        ) {
+            value.language = Locale("vi")
+        }
+    }.value
 }
