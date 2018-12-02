@@ -169,7 +169,7 @@ fun booleanToVisibility(bool: Boolean): Int {
 }
 
 fun getNumber() : Int {
-    val array = arrayOf(5, 6, 103)
+    val array = arrayOf(5, 6, 103, 21)
     return array[Random().nextInt(array.size)]
 }
 
