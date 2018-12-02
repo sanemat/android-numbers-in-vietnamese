@@ -75,8 +75,8 @@ class MainActivity : AppCompatActivity() {
 
         val speechView = findViewById<View>(R.id.speechView)
         speechView.setOnClickListener {
-            val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
-            val vietnamese = vietnameseTextView.text.toString()
+            val numberTextView = findViewById<TextView>(R.id.numberText)
+            val vietnamese = numberTextView.text.toString()
             if (this.textToSpeech == null) {
                 this.textToSpeech = initTextToSpeech(applicationContext)
             }
