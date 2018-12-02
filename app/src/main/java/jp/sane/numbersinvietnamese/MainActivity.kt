@@ -45,13 +45,15 @@ class MainActivity : AppCompatActivity() {
         val numberView = findViewById<View>(R.id.numberView)
 
         numberView.setOnClickListener {
-            toggleNumberVisibility()
+            val numberText = findViewById<TextView>(R.id.numberText)
+            numberText.visibility = toggledVisibility(numberText.visibility)
         }
 
         val vietnameseView = findViewById<View>(R.id.vietnameseView)
 
         vietnameseView.setOnClickListener {
-            toggleVietnameseVisibility()
+            val vietnameseText = findViewById<TextView>(R.id.vietnameseText)
+            vietnameseText.visibility = toggledVisibility(vietnameseText.visibility)
         }
 
         val saveToggleButton = findViewById<Button>(R.id.saveToggle)
@@ -101,16 +103,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         speechVietnamese(vietnamese, applicationContext)
-    }
-
-    fun toggleNumberVisibility() {
-        val numberText = findViewById<TextView>(R.id.numberText)
-        numberText.visibility = toggledVisibility(numberText.visibility)
-    }
-
-    fun toggleVietnameseVisibility() {
-        val vietnameseText = findViewById<TextView>(R.id.vietnameseText)
-        vietnameseText.visibility = toggledVisibility(vietnameseText.visibility)
     }
 
     private fun speechVietnamese(vietnamese: String, context: Context) {
