@@ -5,9 +5,8 @@ import org.junit.Test
 import org.junit.Assert.*
 
 /**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
+ * Vietnamese numbers https://www.omniglot.com/language/numbers/vietnamese.htm
+ * Counting numbers in Vietnamese https://www.colanguage.com/counting-numbers-vietnamese
  */
 class NumberToVietnameseTest {
     @Test
