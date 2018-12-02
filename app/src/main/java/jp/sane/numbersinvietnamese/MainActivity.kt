@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
             private val inner = TextToSpeech(
                 applicationContext
             ) {
-                value.setLanguage(Locale("vi"))
+                value.language = Locale("vi")
             }
         }.value
         return tts;
