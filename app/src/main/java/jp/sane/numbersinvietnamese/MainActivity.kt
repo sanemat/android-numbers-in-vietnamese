@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             wordView.text = vietnameseWord
             wordView.visibility = booleanToVisibility(revealVietnamese)
             val vietnamese = key.toString()
+            if (!autoPlay) {
+                return@setOnClickListener
+            }
 
             if (this.textToSpeech == null) {
                 this.textToSpeech = object {
@@ -116,6 +119,10 @@ class MainActivity : AppCompatActivity() {
         wordView.text = vietnameseWord
         wordView.visibility = booleanToVisibility(revealVietnamese)
         val vietnamese = key.toString()
+
+        if (!autoPlay) {
+            return
+        }
 
         if (this.textToSpeech == null) {
             this.textToSpeech = object {
