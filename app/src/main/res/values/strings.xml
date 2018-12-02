@@ -6,4 +6,5 @@
     <string name="nextButton">next</string>
     <string name="speechText">▶</string>
     <string name="savetoggle">saveToggle</string>
+    <string name="autoplay">autoplay</string>
 </resources>

@@ -70,7 +70,15 @@
             android:layout_height="wrap_content"
             android:id="@+id/saveToggle" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/speechView" app:layout_constraintBottom_toTopOf="@+id/nextView"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            app:layout_constraintHorizontal_bias="0.24"/>
+            app:layout_constraintHorizontal_bias="0.24" android:layout_marginBottom="8dp"/>
+    <Switch
+            android:text="@string/autoplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/autoplaySwitch" app:layout_constraintStart_toEndOf="@+id/saveToggle"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/speechView"
+            android:layout_marginBottom="16dp" app:layout_constraintBottom_toTopOf="@+id/nextView"/>
 </android.support.constraint.ConstraintLayout>
