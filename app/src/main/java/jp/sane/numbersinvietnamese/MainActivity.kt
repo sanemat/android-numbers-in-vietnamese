@@ -107,20 +107,12 @@ class MainActivity : AppCompatActivity() {
 
     fun toggleNumberVisibility() {
         val numberText = findViewById<TextView>(R.id.numberText)
-        if (numberText.visibility == View.VISIBLE) {
-            numberText.visibility = View.INVISIBLE
-        } else {
-            numberText.visibility = View.VISIBLE
-        }
+        numberText.visibility = toggledVisibility(numberText.visibility)
     }
 
     fun toggleVietnameseVisibility() {
         val vietnameseText = findViewById<TextView>(R.id.vietnameseText)
-        if (vietnameseText.visibility == View.VISIBLE) {
-            vietnameseText.visibility = View.INVISIBLE
-        } else {
-            vietnameseText.visibility = View.VISIBLE
-        }
+        vietnameseText.visibility = toggledVisibility(vietnameseText.visibility)
     }
 }
 
@@ -135,4 +127,13 @@ fun initTextToSpeech(context: Context) : TextToSpeech {
             value.language = Locale("vi")
         }
     }.value
+}
+
+// FIXME: :thinking_face: Int ??
+fun toggledVisibility(visibility: Int): Int {
+    return if (visibility == View.VISIBLE) {
+        View.INVISIBLE
+    } else {
+        View.VISIBLE
+    }
 }
