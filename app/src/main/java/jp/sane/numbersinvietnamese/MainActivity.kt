@@ -37,6 +37,11 @@ class MainActivity : AppCompatActivity() {
             val wordView = findViewById<TextView>(R.id.vietnameseText)
             wordView.text = vietnameseWord
             wordView.visibility = booleanToVisibility(revealVietnamese)
+
+            if (this.textToSpeech == null) {
+                this.textToSpeech = initTextToSpeech(applicationContext)
+            }
+            this.textToSpeech?.speak(key.toString(), TextToSpeech.QUEUE_FLUSH,null,null)
         }
 
         val numberView = findViewById<View>(R.id.numberView)
@@ -83,6 +88,11 @@ class MainActivity : AppCompatActivity() {
         val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
         wordView.visibility = booleanToVisibility(revealVietnamese)
+
+        if (this.textToSpeech == null) {
+            this.textToSpeech = initTextToSpeech(applicationContext)
+        }
+        this.textToSpeech?.speak(key.toString(), TextToSpeech.QUEUE_FLUSH,null,null)
     }
 
     fun toggleNumberVisibility() {
