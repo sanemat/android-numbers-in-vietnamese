@@ -22,13 +22,13 @@ class MainActivity : AppCompatActivity() {
             val revealNumber = pref.getBoolean("revealNumber", true)
             val revealVietnamese = pref.getBoolean("revealVietnamese", true)
             val autoPlay = pref.getBoolean("autoPlay", false)
-            val key = getNumber()
-            val vietnameseWord = number2Letter(key)
-            numberText.text = key.toString()
+            val number = getNumber()
+            val vietnameseWord = number2Letter(number)
+            val vietnamese = number.toString()
+            numberText.text = vietnamese
             numberText.visibility = booleanToVisibility(revealNumber)
             vietnameseText.text = vietnameseWord
             vietnameseText.visibility = booleanToVisibility(revealVietnamese)
-            val vietnamese = key.toString()
             if (!autoPlay) {
                 return@setOnClickListener
             }
@@ -68,13 +68,13 @@ class MainActivity : AppCompatActivity() {
 
         val revealNumber = pref.getBoolean("revealNumber", true)
         val revealVietnamese = pref.getBoolean("revealVietnamese", true)
-        val key = getNumber()
-        val vietnameseWord = number2Letter(key)
-        numberText.text = key.toString()
+        val number = getNumber()
+        val vietnameseWord = number2Letter(number)
+        val vietnamese = number.toString()
+        numberText.text = vietnamese
         numberText.visibility = booleanToVisibility(revealNumber)
         vietnameseText.text = vietnameseWord
         vietnameseText.visibility = booleanToVisibility(revealVietnamese)
-        val vietnamese = key.toString()
 
         if (!autoPlay) {
             return
