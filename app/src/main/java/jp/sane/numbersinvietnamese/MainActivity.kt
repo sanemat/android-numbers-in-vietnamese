@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (this.textToSpeech == null) {
-            this.textToSpeech = initTextToSpeech()
+            this.textToSpeech = initTextToSpeech(applicationContext)
         }
 
         val results = mapOf("5" to "năm", "6" to "sáu", "103" to "một trăm lẻ ba")
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
             val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
             val vietnamese = vietnameseTextView.text.toString()
             if (this.textToSpeech == null) {
-                this.textToSpeech = initTextToSpeech()
+                this.textToSpeech = initTextToSpeech(applicationContext)
             }
             this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
         }
@@ -122,17 +122,17 @@ class MainActivity : AppCompatActivity() {
             vietnameseText.visibility = View.VISIBLE
         }
     }
+}
 
-    private fun initTextToSpeech() : TextToSpeech {
-        // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
-        // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
-        return object {
-            val value: TextToSpeech get() = inner
-            private val inner = TextToSpeech(
-                applicationContext
-            ) {
-                value.language = Locale("vi")
-            }
-        }.value
-    }
+fun initTextToSpeech(context: Context) : TextToSpeech {
+    // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
+    // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
+    return object {
+        val value: TextToSpeech get() = inner
+        private val inner = TextToSpeech(
+            context
+        ) {
+            value.language = Locale("vi")
+        }
+    }.value
 }
