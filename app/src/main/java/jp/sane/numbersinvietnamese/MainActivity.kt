@@ -119,8 +119,14 @@ fun booleanToVisibility(bool: Boolean): Int {
 }
 
 fun getNumber() : Int {
-    val array = arrayOf(5, 6, 103, 21)
-    return array[Random().nextInt(array.size)]
+    return when (Random().nextInt(99)) {
+        in 0..39 -> Random().nextInt(9) // 0-9
+        in 40..79 -> Random().nextInt(89) + 10 // 10-99
+        in 80..89 -> Random().nextInt(899) + 100 // 100-999
+        in 90..94 -> 103
+        in 95..99 -> 21
+        else -> 0
+    }
 }
 
 fun numberToVietnamese(num: Int) : String {
