@@ -126,14 +126,13 @@ class MainActivity : AppCompatActivity() {
     private fun initTextToSpeech() : TextToSpeech {
         // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
         // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
-        val tts = object {
+        return object {
             val value: TextToSpeech get() = inner
             private val inner = TextToSpeech(
                 applicationContext
             ) {
                 value.language = Locale("vi")
             }
-        }.value
-        return tts;
+        }.value;
     }
 }
