@@ -6,6 +6,7 @@ import android.speech.tts.TextToSpeech
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
+import android.widget.Switch
 import android.widget.TextView
 import java.util.*
 
@@ -73,6 +74,18 @@ class MainActivity : AppCompatActivity() {
             editor.apply()
         }
 
+        val autoPlay = pref.getBoolean("autoPlay", false)
+        val autoplaySwitch: Switch = findViewById(R.id.autoplaySwitch)
+        autoplaySwitch.isChecked = autoPlay
+
+        autoplaySwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                pref.edit().putBoolean("autoPlay", true).apply()
+            } else {
+                pref.edit().putBoolean("autoPlay", false).apply()
+            }
+        }
+
         val speechView = findViewById<View>(R.id.speechView)
         speechView.setOnClickListener {
             val numberTextView = findViewById<TextView>(R.id.numberText)
@@ -94,7 +107,6 @@ class MainActivity : AppCompatActivity() {
 
         val revealNumber = pref.getBoolean("revealNumber", true)
         val revealVietnamese = pref.getBoolean("revealVietnamese", true)
-        val autoPlay = pref.getBoolean("autoPlay", false)
         val key = getNumber()
         val vietnameseWord = number2Letter(key)
         val keyView = findViewById<TextView>(R.id.numberText)
