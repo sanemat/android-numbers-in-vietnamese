@@ -129,11 +129,10 @@ class MainActivity : AppCompatActivity() {
         val tts = object {
             val value: TextToSpeech get() = inner
             private val inner = TextToSpeech(
-                applicationContext,
-                {
-                    value.setLanguage(Locale("vi"))
-                }
-            )
+                applicationContext
+            ) {
+                value.setLanguage(Locale("vi"))
+            }
         }.value
         return tts;
     }
