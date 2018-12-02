@@ -36,18 +36,10 @@ class MainActivity : AppCompatActivity() {
             val vietnameseWord = results[key]
             val keyView = findViewById<TextView>(R.id.numberText)
             keyView.text = key
-            if (revealNumber) {
-                keyView.visibility = View.VISIBLE
-            } else {
-                keyView.visibility = View.INVISIBLE
-            }
+            keyView.visibility = booleanToVisibility(revealNumber)
             val wordView = findViewById<TextView>(R.id.vietnameseText)
             wordView.text = vietnameseWord
-            if (revealVietnamese) {
-                wordView.visibility = View.VISIBLE
-            } else {
-                wordView.visibility = View.INVISIBLE
-            }
+            wordView.visibility = booleanToVisibility(revealVietnamese)
         }
 
         val numberView = findViewById<View>(R.id.numberView)
@@ -91,18 +83,10 @@ class MainActivity : AppCompatActivity() {
         val vietnameseWord = results[key]
         val keyView = findViewById<TextView>(R.id.numberText)
         keyView.text = key
-        if (revealNumber) {
-            keyView.visibility = View.VISIBLE
-        } else {
-            keyView.visibility = View.INVISIBLE
-        }
+        keyView.visibility = booleanToVisibility(revealNumber)
         val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
-        if (revealVietnamese) {
-            wordView.visibility = View.VISIBLE
-        } else {
-            wordView.visibility = View.INVISIBLE
-        }
+        wordView.visibility = booleanToVisibility(revealVietnamese)
     }
 
     fun toggleNumberVisibility() {
@@ -135,5 +119,14 @@ fun toggledVisibility(visibility: Int): Int {
         View.INVISIBLE
     } else {
         View.VISIBLE
+    }
+}
+
+// FIXME: :thinking_face: Int ??
+fun booleanToVisibility(bool: Boolean): Int {
+    return if (bool) {
+        View.VISIBLE
+    } else {
+        View.INVISIBLE
     }
 }
