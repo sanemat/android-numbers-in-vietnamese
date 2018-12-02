@@ -78,10 +78,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         val autoPlay = pref.getBoolean("autoPlay", false)
-        val autoplaySwitch: Switch = findViewById(R.id.autoplaySwitch)
-        autoplaySwitch.isChecked = autoPlay
+        val autoPlaySwitch: Switch = findViewById(R.id.autoPlaySwitch)
+        autoPlaySwitch.isChecked = autoPlay
 
-        autoplaySwitch.setOnCheckedChangeListener { _, isChecked ->
+        autoPlaySwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 pref.edit().putBoolean("autoPlay", true).apply()
             } else {
