@@ -17,10 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (this.textToSpeech == null) {
-            this.textToSpeech = initTextToSpeech(applicationContext)
-        }
-
         val nextView = findViewById<View>(R.id.nextView)
 
         val pref = getSharedPreferences("num-in-v", Context.MODE_PRIVATE)
@@ -37,11 +33,21 @@ class MainActivity : AppCompatActivity() {
             val wordView = findViewById<TextView>(R.id.vietnameseText)
             wordView.text = vietnameseWord
             wordView.visibility = booleanToVisibility(revealVietnamese)
+            val vietnamese = key.toString()
 
             if (this.textToSpeech == null) {
-                this.textToSpeech = initTextToSpeech(applicationContext)
+                this.textToSpeech = object {
+                    val value: TextToSpeech get() = inner
+                    private val inner = TextToSpeech(
+                        applicationContext
+                    ) {
+                        value.language = Locale("vi")
+                        value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
+                    }
+                }.value
+            } else {
+                this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
             }
-            this.textToSpeech?.speak(key.toString(), TextToSpeech.QUEUE_FLUSH,null,null)
         }
 
         val numberView = findViewById<View>(R.id.numberView)
@@ -72,9 +78,18 @@ class MainActivity : AppCompatActivity() {
             val numberTextView = findViewById<TextView>(R.id.numberText)
             val vietnamese = numberTextView.text.toString()
             if (this.textToSpeech == null) {
-                this.textToSpeech = initTextToSpeech(applicationContext)
+                this.textToSpeech = object {
+                    val value: TextToSpeech get() = inner
+                    private val inner = TextToSpeech(
+                        applicationContext
+                    ) {
+                        value.language = Locale("vi")
+                        value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
+                    }
+                }.value
+            } else {
+                this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
             }
-            this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
         }
 
         val revealNumber = pref.getBoolean("revealNumber", true)
@@ -88,11 +103,21 @@ class MainActivity : AppCompatActivity() {
         val wordView = findViewById<TextView>(R.id.vietnameseText)
         wordView.text = vietnameseWord
         wordView.visibility = booleanToVisibility(revealVietnamese)
+        val vietnamese = key.toString()
 
         if (this.textToSpeech == null) {
-            this.textToSpeech = initTextToSpeech(applicationContext)
+            this.textToSpeech = object {
+                val value: TextToSpeech get() = inner
+                private val inner = TextToSpeech(
+                    applicationContext
+                ) {
+                    value.language = Locale("vi")
+                    value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
+                }
+            }.value
+        } else {
+            this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
         }
-        this.textToSpeech?.speak(key.toString(), TextToSpeech.QUEUE_FLUSH,null,null)
     }
 
     fun toggleNumberVisibility() {
@@ -104,19 +129,6 @@ class MainActivity : AppCompatActivity() {
         val vietnameseText = findViewById<TextView>(R.id.vietnameseText)
         vietnameseText.visibility = toggledVisibility(vietnameseText.visibility)
     }
-}
-
-fun initTextToSpeech(context: Context) : TextToSpeech {
-    // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
-    // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
-    return object {
-        val value: TextToSpeech get() = inner
-        private val inner = TextToSpeech(
-            context
-        ) {
-            value.language = Locale("vi")
-        }
-    }.value
 }
 
 // FIXME: :thinking_face: Int ??
