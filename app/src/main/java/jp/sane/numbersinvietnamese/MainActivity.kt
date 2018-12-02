@@ -133,6 +133,6 @@ class MainActivity : AppCompatActivity() {
             ) {
                 value.language = Locale("vi")
             }
-        }.value;
+        }.value
     }
 }
