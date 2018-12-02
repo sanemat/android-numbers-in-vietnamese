@@ -24,8 +24,8 @@ class MainActivity : AppCompatActivity() {
             val autoPlay = pref.getBoolean("autoPlay", false)
             val number = getNumber()
             val vietnameseWord = number2Letter(number)
-            val vietnamese = number.toString()
-            numberText.text = vietnamese
+            val numberString = number.toString()
+            numberText.text = numberString
             numberText.visibility = booleanToVisibility(revealNumber)
             vietnameseText.text = vietnameseWord
             vietnameseText.visibility = booleanToVisibility(revealVietnamese)
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            speechVietnamese(vietnamese, applicationContext)
+            speechVietnamese(numberString, applicationContext)
         }
 
         numberView.setOnClickListener {
@@ -70,8 +70,8 @@ class MainActivity : AppCompatActivity() {
         val revealVietnamese = pref.getBoolean("revealVietnamese", true)
         val number = getNumber()
         val vietnameseWord = number2Letter(number)
-        val vietnamese = number.toString()
-        numberText.text = vietnamese
+        val numberString = number.toString()
+        numberText.text = numberString
         numberText.visibility = booleanToVisibility(revealNumber)
         vietnameseText.text = vietnameseWord
         vietnameseText.visibility = booleanToVisibility(revealVietnamese)
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        speechVietnamese(vietnamese, applicationContext)
+        speechVietnamese(numberString, applicationContext)
     }
 
     private fun speechVietnamese(vietnamese: String, context: Context) {
