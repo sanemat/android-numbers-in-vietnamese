@@ -5,6 +5,6 @@
     <string name="vietnamesetext">nam</string>
     <string name="nextButton">next</string>
     <string name="speechText">▶</string>
-    <string name="savetoggle">saveToggle</string>
+    <string name="savetoggle">Save Reveal or Not</string>
     <string name="autoPlay">AutoPlay</string>
 </resources>
