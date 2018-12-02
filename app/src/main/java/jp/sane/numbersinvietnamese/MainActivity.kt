@@ -11,10 +11,15 @@ import android.widget.Button
 
 
 class MainActivity : AppCompatActivity() {
+    var textToSpeech: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (textToSpeech == null) {
+            textToSpeech = initTextToSpeech()
+        }
 
         val results = mapOf("5" to "năm", "6" to "sáu", "103" to "một trăm lẻ ba")
         val random = Random()
@@ -72,17 +77,10 @@ class MainActivity : AppCompatActivity() {
         speechView.setOnClickListener {
             val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
             val vietnamese = vietnameseTextView.text.toString()
-            // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
-            val textToSpeech = object {
-                val value: TextToSpeech get() = inner
-                private val inner = TextToSpeech(
-                    applicationContext,
-                    {
-                        value.setLanguage(Locale("vi"))
-                        value.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
-                    }
-                )
-            }.value
+            if (textToSpeech == null) {
+                textToSpeech = initTextToSpeech()
+            }
+            textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
         }
 
         val revealNumber = pref.getBoolean("revealNumber", true)
@@ -123,5 +121,20 @@ class MainActivity : AppCompatActivity() {
         } else {
             vietnameseText.visibility = View.VISIBLE
         }
+    }
+
+    fun initTextToSpeech() : TextToSpeech {
+        // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
+        // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
+        val tts = object {
+            val value: TextToSpeech get() = inner
+            private val inner = TextToSpeech(
+                applicationContext,
+                {
+                    value.setLanguage(Locale("vi"))
+                }
+            )
+        }.value
+        return tts;
     }
 }
