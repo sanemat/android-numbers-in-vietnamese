@@ -11,14 +11,14 @@ import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
-    var textToSpeech: TextToSpeech? = null
+    private var textToSpeech: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (textToSpeech == null) {
-            textToSpeech = initTextToSpeech()
+        if (this.textToSpeech == null) {
+            this.textToSpeech = initTextToSpeech()
         }
 
         val results = mapOf("5" to "năm", "6" to "sáu", "103" to "một trăm lẻ ba")
@@ -77,10 +77,10 @@ class MainActivity : AppCompatActivity() {
         speechView.setOnClickListener {
             val vietnameseTextView = findViewById<TextView>(R.id.vietnameseText)
             val vietnamese = vietnameseTextView.text.toString()
-            if (textToSpeech == null) {
-                textToSpeech = initTextToSpeech()
+            if (this.textToSpeech == null) {
+                this.textToSpeech = initTextToSpeech()
             }
-            textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
+            this.textToSpeech?.speak(vietnamese, TextToSpeech.QUEUE_FLUSH,null,null)
         }
 
         val revealNumber = pref.getBoolean("revealNumber", true)
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun initTextToSpeech() : TextToSpeech {
+    private fun initTextToSpeech() : TextToSpeech {
         // android - Unresolved reference inside anonymous Kotlin listener - Stack Overflow
         // https://stackoverflow.com/questions/35049850/unresolved-reference-inside-anonymous-kotlin-listener
         val tts = object {
