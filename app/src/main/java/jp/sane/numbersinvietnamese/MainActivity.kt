@@ -123,8 +123,9 @@ fun getNumber() : Int {
         in 0..39 -> Random().nextInt(9) // 0-9
         in 40..79 -> Random().nextInt(89) + 10 // 10-99
         in 80..89 -> Random().nextInt(899) + 100 // 100-999
-        in 90..94 -> 103
-        in 95..99 -> 21
+        in 90..92 -> 103
+        in 93..96 -> 1000
+        in 97..99 -> 1000000
         else -> 0
     }
 }
