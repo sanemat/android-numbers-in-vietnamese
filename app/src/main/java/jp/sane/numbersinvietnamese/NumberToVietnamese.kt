@@ -2,9 +2,10 @@ package jp.sane.numbersinvietnamese
 
 val zero = "không"
 val normalNumbers = arrayOf(
-    "linh", "một", "hai", "ba", "bốn",
+    "lẻ", "một", "hai", "ba", "bốn",
     "năm", "sáu", "bảy", "tám", "chín"
 )
+// north: linh, south: lẻ
 val ten = "mười"
 val specialTen = "mươi"
 val specialFive = "lăm"
