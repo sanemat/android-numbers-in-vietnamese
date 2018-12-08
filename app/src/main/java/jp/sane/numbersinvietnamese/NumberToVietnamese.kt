@@ -18,9 +18,9 @@ fun numberToVietnamese(num: Int) : String {
         throw NotImplementedError("unknown: $num")
     }
 
-    return when {
-        num == 0 -> normalNumbers[num]
-        num in 1000000..999999999 -> {
+    return when (num) {
+        0 -> normalNumbers[num]
+        in 1000000..999999999 -> {
             val quot = num / 1000000
             val rem = num % 1000000
             if (rem == 0) {
@@ -28,7 +28,7 @@ fun numberToVietnamese(num: Int) : String {
             }
             throw NotImplementedError("unknown: $num")
         }
-        num in 1000..999999 -> {
+        in 1000..999999 -> {
             val quot = num / 1000
             val rem = num % 1000
             if (rem == 0) {
@@ -36,7 +36,7 @@ fun numberToVietnamese(num: Int) : String {
             }
             throw NotImplementedError("unknown: $num")
         }
-        num in 1..999 -> {
+        in 1..999 -> {
             val hundredsPosition = num / 100
             val tensPosition = (num - hundredsPosition * 100) / 10
             val onesPosition = num % 10
