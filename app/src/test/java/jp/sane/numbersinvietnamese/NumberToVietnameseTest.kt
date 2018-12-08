@@ -23,7 +23,23 @@ class NumberToVietnameseTest {
     }
     @Test
     fun num10() {
-        assertEquals("một mười", numberToVietnamese(10))
+        assertEquals("mười", numberToVietnamese(10))
+    }
+    @Test
+    fun num11() {
+        assertEquals("mười một", numberToVietnamese(11))
+    }
+    @Test
+    fun num15() {
+        assertEquals("mười lăm", numberToVietnamese(15))
+    }
+    @Test
+    fun num20() {
+        assertEquals("hai mươi", numberToVietnamese(20))
+    }
+    @Test
+    fun num21() {
+        assertEquals("hai mươi mốt", numberToVietnamese(21))
     }
     @Test
     fun num100() {
