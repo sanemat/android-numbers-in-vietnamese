@@ -2,9 +2,8 @@ package jp.sane.numbersinvietnamese
 
 @Throws(NotImplementedError::class)
 fun numberToVietnamese(num: Int) : String {
-    val nothingString = "không"
     val normalNumbers = arrayOf(
-        "lẻ", "một", "hai", "ba", "bốn",
+        "không", "một", "hai", "ba", "bốn",
         "năm", "sáu", "bảy", "tám", "chín"
     )
     // north: linh, south: lẻ
@@ -20,7 +19,7 @@ fun numberToVietnamese(num: Int) : String {
     }
 
     return when {
-        num == 0 -> nothingString
+        num == 0 -> normalNumbers[num]
         num in 1000000..999999999 -> {
             val quot = num / 1000000
             val rem = num % 1000000
@@ -52,10 +51,9 @@ fun withoutPrefix(hundredsPosition: Int, tensPosition: Int, onesPosition: Int) :
         return null
     }
     val normalNumbers = arrayOf(
-        "lẻ", "một", "hai", "ba", "bốn",
+        "không", "một", "hai", "ba", "bốn",
         "năm", "sáu", "bảy", "tám", "chín"
     )
-    // north: linh, south: lẻ
     val ten = "mười"
     val specialTen = "mươi"
     val specialFive = "lăm"
@@ -63,7 +61,7 @@ fun withoutPrefix(hundredsPosition: Int, tensPosition: Int, onesPosition: Int) :
     val hundred = "trăm"
     val thousand = "nghìn"
     val million = "triệu"
-    val nothingString = "không"
+    // north: linh, south: lẻ
     val empty = "lẻ"
 
     val temp = mutableListOf<String?>()
