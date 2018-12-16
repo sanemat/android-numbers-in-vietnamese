@@ -8,6 +8,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
+import jp.sane.numbertovietnamese.numberToVietnamese
 
 class MainActivity : AppCompatActivity() {
     private var textToSpeech: TextToSpeech? = null
