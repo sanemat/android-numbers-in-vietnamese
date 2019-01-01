@@ -3,7 +3,7 @@ package jp.sane.numbersinvietnamese
 import android.content.Context
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
