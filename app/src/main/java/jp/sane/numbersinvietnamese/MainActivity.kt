@@ -5,21 +5,23 @@ import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 import jp.sane.numbertovietnamese.numberToVietnamese
+import jp.sane.numbersinvietnamese.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private var textToSpeech: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val pref = getSharedPreferences("num-in-v", Context.MODE_PRIVATE)
 
-        nextView.setOnClickListener {
+        binding.nextView.setOnClickListener {
             val revealNumber = pref.getBoolean("revealNumber", true)
             val revealVietnamese = pref.getBoolean("revealVietnamese", true)
             val autoPlay = pref.getBoolean("autoPlay", false)
@@ -30,10 +32,10 @@ class MainActivity : AppCompatActivity() {
                 e.message
             }
             val numberString = number.toString()
-            numberText.text = numberString
-            numberText.visibility = booleanToVisibility(revealNumber)
-            vietnameseText.text = vietnameseWord
-            vietnameseText.visibility = booleanToVisibility(revealVietnamese)
+            binding.numberText.text = numberString
+            binding.numberText.visibility = booleanToVisibility(revealNumber)
+            binding.vietnameseText.text = vietnameseWord
+            binding.vietnameseText.visibility = booleanToVisibility(revealVietnamese)
             if (!autoPlay) {
                 return@setOnClickListener
             }
@@ -41,25 +43,25 @@ class MainActivity : AppCompatActivity() {
             speechVietnamese(numberString, applicationContext)
         }
 
-        numberView.setOnClickListener {
-            numberText.visibility = toggledVisibility(numberText.visibility)
+        binding.numberView.setOnClickListener {
+            binding.numberText.visibility = toggledVisibility(binding.numberText.visibility)
         }
 
-        vietnameseView.setOnClickListener {
-            vietnameseText.visibility = toggledVisibility(vietnameseText.visibility)
+        binding.vietnameseView.setOnClickListener {
+            binding.vietnameseText.visibility = toggledVisibility(binding.vietnameseText.visibility)
         }
 
-        saveToggle.setOnClickListener {
+        binding.saveToggle.setOnClickListener {
             val editor = pref.edit()
-            editor.putBoolean("revealNumber", numberText.visibility == View.VISIBLE)
-            editor.putBoolean("revealVietnamese", vietnameseText.visibility == View.VISIBLE)
+            editor.putBoolean("revealNumber", binding.numberText.visibility == View.VISIBLE)
+            editor.putBoolean("revealVietnamese", binding.vietnameseText.visibility == View.VISIBLE)
             editor.apply()
         }
 
         val autoPlay = pref.getBoolean("autoPlay", false)
-        autoPlaySwitch.isChecked = autoPlay
+        binding.autoPlaySwitch.isChecked = autoPlay
 
-        autoPlaySwitch.setOnCheckedChangeListener { _, isChecked ->
+        binding.autoPlaySwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 pref.edit().putBoolean("autoPlay", true).apply()
             } else {
@@ -67,8 +69,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        speechView.setOnClickListener {
-            speechVietnamese(numberText.text.toString(), applicationContext)
+        binding.speechView.setOnClickListener {
+            speechVietnamese(binding.numberText.text.toString(), applicationContext)
         }
 
         val revealNumber = pref.getBoolean("revealNumber", true)
@@ -80,10 +82,10 @@ class MainActivity : AppCompatActivity() {
             e.message
         }
         val numberString = number.toString()
-        numberText.text = numberString
-        numberText.visibility = booleanToVisibility(revealNumber)
-        vietnameseText.text = vietnameseWord
-        vietnameseText.visibility = booleanToVisibility(revealVietnamese)
+        binding.numberText.text = numberString
+        binding.numberText.visibility = booleanToVisibility(revealNumber)
+        binding.vietnameseText.text = vietnameseWord
+        binding.vietnameseText.visibility = booleanToVisibility(revealVietnamese)
 
         if (!autoPlay) {
             return
