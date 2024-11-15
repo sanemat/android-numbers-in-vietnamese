@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
+    namespace "jp.sane.numbersinvietnamese"
     compileSdk = 34
     defaultConfig {
         applicationId "jp.sane.numbersinvietnamese"
