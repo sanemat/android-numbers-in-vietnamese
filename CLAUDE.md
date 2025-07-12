@@ -40,9 +40,9 @@ This is an Android application for learning Vietnamese numbers. The app displays
 ### Development Setup
 - **Target SDK**: 35
 - **Min SDK**: 21
-- **Java Version**: 17
-- **Kotlin Version**: 1.9.23
-- **Build Tools**: Android Gradle Plugin 8.2.2
+- **Java Version**: 21
+- **Kotlin Version**: 1.9.25
+- **Build Tools**: Android Gradle Plugin 8.7.3, Gradle 8.12
 
 ## Key Dependencies
 - `com.github.sanemat:maven-number-to-vietnamese:0.5.0` - Core number conversion library
@@ -71,7 +71,7 @@ This is an Android application for learning Vietnamese numbers. The app displays
 ## Testing
 - Unit tests: Use `./gradlew test`
 - Instrumented tests: Use `./gradlew connectedAndroidTest`
-- CI runs on GitHub Actions with JDK 17 and caches Gradle dependencies
+- CI runs on GitHub Actions with JDK 21 and uses built-in Gradle caching
 
 ## Versioning
 Version format: major.minor.patch with versionCode based on major version (e.g., 3.0.0 = versionCode 3000000)
