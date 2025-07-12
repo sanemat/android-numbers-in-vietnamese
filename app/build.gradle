@@ -4,11 +4,11 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace "jp.sane.numbersinvietnamese"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId "jp.sane.numbersinvietnamese"
         minSdkVersion 21
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode 3000000
         versionName "3.0.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
