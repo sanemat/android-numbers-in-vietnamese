@@ -11,3 +11,5 @@
 .externalNativeBuild
 
 /app/release
+
+/.claude
