@@ -38,7 +38,7 @@ This is an Android application for learning Vietnamese numbers. The app displays
 ```
 
 ### Development Setup
-- **Target SDK**: 34 (updating to 35 in progress)
+- **Target SDK**: 35
 - **Min SDK**: 21
 - **Java Version**: 17
 - **Kotlin Version**: 1.9.23
