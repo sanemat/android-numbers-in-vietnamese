@@ -21,6 +21,9 @@ This is an Android application for learning Vietnamese numbers. The app displays
 # Run tests
 ./gradlew test
 
+# Run lint checks
+./gradlew lint
+
 # Build debug APK
 ./gradlew assembleDebug
 
@@ -35,7 +38,7 @@ This is an Android application for learning Vietnamese numbers. The app displays
 ```
 
 ### Development Setup
-- **Target SDK**: 34
+- **Target SDK**: 34 (updating to 35 in progress)
 - **Min SDK**: 21
 - **Java Version**: 17
 - **Kotlin Version**: 1.9.23
@@ -53,6 +56,12 @@ This is an Android application for learning Vietnamese numbers. The app displays
 - Number generation with weighted randomization (favors smaller numbers)
 - Settings persistence via SharedPreferences
 - Vietnamese TTS integration with fallback error handling
+- Edge-to-edge support preparation for API 35
+
+### API 35 Migration Notes
+- Edge-to-edge enforcement handled with `enableEdgeToEdge()` call
+- `windowOptOutEdgeToEdgeEnforcement` in `values-v35/styles.xml` for compatibility
+- Lint checks ensure API compatibility across SDK versions
 
 ### Build Configuration
 - `app/build.gradle` - Main app configuration with dependencies
