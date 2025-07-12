@@ -43,7 +43,7 @@ This is an Android application for learning Vietnamese numbers. The app displays
 
 ## Key Dependencies
 - `com.github.sanemat:maven-number-to-vietnamese:0.5.0` - Core number conversion library
-- AndroidX AppCompat 1.7.1 and ConstraintLayout 2.2.1 for UI
+- AndroidX AppCompat and ConstraintLayout for UI
 - JUnit and Espresso for testing
 
 ## Main Components
