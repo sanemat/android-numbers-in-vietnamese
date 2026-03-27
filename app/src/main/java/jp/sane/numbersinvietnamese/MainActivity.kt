@@ -6,7 +6,8 @@ import android.speech.tts.TextToSpeech
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import java.util.*
+import kotlin.random.Random
+import java.util.Locale
 
 import jp.sane.numbertovietnamese.numberToVietnamese
 import jp.sane.numbersinvietnamese.databinding.ActivityMainBinding
@@ -132,10 +133,10 @@ fun booleanToVisibility(bool: Boolean): Int {
 }
 
 fun getNumber() : Int {
-    return when (Random().nextInt(99)) {
-        in 0..39 -> Random().nextInt(9) // 0-9
-        in 40..79 -> Random().nextInt(89) + 10 // 10-99
-        in 80..89 -> Random().nextInt(899) + 100 // 100-999
+    return when (Random.nextInt(99)) {
+        in 0..39 -> Random.nextInt(9) // 0-9
+        in 40..79 -> Random.nextInt(89) + 10 // 10-99
+        in 80..89 -> Random.nextInt(899) + 100 // 100-999
         in 90..92 -> 103
         in 93..96 -> 1000
         in 97..99 -> 1000000
