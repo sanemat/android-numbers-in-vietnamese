@@ -1,3 +1,8 @@
+<a name="3.0.3"></a>
+## 3.0.3 (2026-09-20)
+
+- Fix window insets for edge-to-edge on API 36
+
 <a name="3.0.2"></a>
 ## 3.0.2 (2026-03-18)
 
